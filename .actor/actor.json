@@ -1,0 +1,11 @@
+{
+  "actorSpecification": 1,
+  "name": "adscrawl-selective-rendering",
+  "title": "AdsCrawl Selective Rendering",
+  "description": "Fetch a bounded list of public URLs with explicit ordinary or AdsCrawl-rendered requests.",
+  "version": "0.1",
+  "dockerfile": "../Dockerfile",
+  "dockerContextDir": "..",
+  "readme": "../README.md",
+  "input": "./input_schema.json"
+}

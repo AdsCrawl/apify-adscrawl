@@ -1,0 +1,41 @@
+{
+  "title": "Selective rendering input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "urls": {
+      "title": "URLs",
+      "type": "array",
+      "description": "One to 25 public URLs. Every item must explicitly choose ordinary or rendered fetching.",
+      "editor": "schemaBased",
+      "minItems": 1,
+      "maxItems": 25,
+      "default": [{"url": "https://example.com/", "render": false}],
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {"title": "URL", "type": "string", "description": "Public HTTP or HTTPS URL to fetch."},
+          "render": {"title": "Render with AdsCrawl", "type": "boolean", "default": false, "description": "Use AdsCrawl browser rendering for this URL."},
+          "selector": {"title": "Local CSS selector (optional)", "type": "string", "description": "Applied locally to the full returned HTML; not sent to AdsCrawl."}
+        },
+        "required": ["url", "render"]
+      }
+    },
+    "timeoutSeconds": {
+      "title": "Request timeout (seconds)",
+      "type": "number",
+      "description": "Per-request timeout in seconds.",
+      "default": 20,
+      "minimum": 1,
+      "maximum": 60
+    },
+    "adscrawlApiKey": {
+      "title": "AdsCrawl API key",
+      "type": "string",
+      "editor": "hidden",
+      "isSecret": true,
+      "description": "Required only when at least one URL has render=true. Keep this secret."
+    }
+  },
+  "required": ["urls"]
+}
